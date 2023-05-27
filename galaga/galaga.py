@@ -19,7 +19,7 @@ class Galaga:
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
-        self._create_fleet()
+        self._create_alien_fleet()
         pygame.display.set_caption(self.settings.caption)   
 
     def run_game(self):
@@ -31,6 +31,7 @@ class Galaga:
             self._delete_bullets()
             self._detect_alien_bullet_collisions()
             self._update_aliens()
+            self._repopulate_alien_fleet()
             self._update_screen()                   
             self.clock.tick(self.settings.frame_rate)   
     
@@ -85,7 +86,7 @@ class Galaga:
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)     
 
-    def _create_fleet(self):
+    def _create_alien_fleet(self):
         """Create the fleet of aliens"""
         # Create an alient and keep adding aliens until there's no room left.
         # Spacing between aliens is one alien width
@@ -133,6 +134,12 @@ class Galaga:
         If so, get rid of the bullet and the alien."""
         collisions = pygame.sprite.groupcollide(
             self.bullets, self.aliens, True, True)
+        
+    def _repopulate_alien_fleet(self):
+        """Check if all aliens are destroyed and empty bullets if true"""
+        if not self.aliens:
+            self.bullets.empty()
+            self._create_alien_fleet()
 
 
 if __name__ == '__main__':
