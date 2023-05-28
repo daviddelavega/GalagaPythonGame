@@ -16,6 +16,8 @@ class Galaga:
         self.theme_song_played = False    
         self.clock = pygame.time.Clock()
         self.settings = Settings()
+        self.galaga_logo = pygame.image.load(self.settings.galaga_logo_image) 
+        self.galaga_logo_rect = self.galaga_logo.get_rect()
         self.sound = pygame.mixer.Sound(self.settings.theme_song)
         self.firing_sound = pygame.mixer.Sound(self.settings.firing_sound)
         self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
@@ -32,7 +34,7 @@ class Galaga:
         self.game_active = True
 
     def run_game(self):
-        """Start the main loop for the game."""        
+        """Start the main loop for the game."""       
         while True:          
             self._check_events()                     
             
@@ -43,10 +45,17 @@ class Galaga:
                 self._detect_alien_bullet_collisions()
                 self._update_aliens()
                 self._detect_alien_ship_collisions()
-                self._repopulate_alien_fleet()
-
+                self._repopulate_alien_fleet()           
+           
             self._update_screen()                   
             self.clock.tick(self.settings.frame_rate)   
+
+    def _display_galaga_logo(self):
+        self.screen.fill(self.settings.bg_color)
+        self.screen.blit(self.galaga_logo, self.galaga_logo_rect)
+        pygame.display.flip()
+        sleep(1)
+
     
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
@@ -193,6 +202,7 @@ class Galaga:
 
     def play_theme_song(self):
         self.sound.play()
+        self._display_galaga_logo() 
         # Wait until the sound finishes playing
         pygame.time.wait(int(self.sound.get_length() * 1000))
         return True
@@ -204,6 +214,3 @@ if __name__ == '__main__':
     # Make a game instance, and run the game.
     galaga_game = Galaga()
     galaga_game.run_game()
-
-        
-

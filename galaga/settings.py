@@ -8,6 +8,7 @@ class Settings:
         self.bg_color = (0, 0, 0)
         self.frame_rate = 120
         # Image settings
+        self.galaga_logo_image = 'images/galaga_logo.bmp'
         self.ship_image = 'images/ship.bmp'
         self.alien_image = 'images/alien1.bmp'       
         # Sound settings
