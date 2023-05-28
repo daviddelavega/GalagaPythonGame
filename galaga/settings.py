@@ -7,17 +7,23 @@ class Settings:
         self.caption = 'Galaga'       
         self.bg_color = (0, 0, 0)
         self.frame_rate = 120
+        # Image settings
         self.ship_image = 'images/ship.bmp'
-        self.alien_image = 'images/alien1.bmp'
-        self.ship_speed = 9 
+        self.alien_image = 'images/alien1.bmp'       
+        # Sound settings
+        self.theme_song = 'sound/Galaga_Theme_Song.wav'
+        self.firing_sound = 'sound/Galaga_Firing_Sound_Effect.wav'  
+        # Ship settings
+        self.ship_speed = 9
+        self.ship_limit = 3
         # Bullet settings
-        self.bullet_speed = 10
-        self.bullets_allowed = 25
-        self.bullet_width = 3
-        self.bullet_height = 35
-        self.bullet_color = (255, 255, 255)
+        self.bullet_speed = 15
+        self.bullets_allowed = 35
+        self.bullet_width = 700
+        self.bullet_height = 30
+        self.bullet_color = (255, 0, 0)
         # Alien settings
-        self.alien_speed = 3.0
-        self.fleet_drop_speed = 5
+        self.alien_speed = 2.0
+        self.fleet_drop_speed = 7
         # fleet direction of 1 represents right; -1 represents left
         self.fleet_direction = 1
