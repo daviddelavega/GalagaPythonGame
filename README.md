@@ -8,4 +8,5 @@
 # 6. Press Spacebar to shoot the aliens
 # 7. Press left/right keys to move the ship
 # 8. Press q to quit the game.
-# More upgrades soon: Ship/Alien Collision detection, Scoring system, sound effects, aliens shoot back, explosion graphics.
+# Latest upgrades as of 5/27/2023: Ship/Alien Collision detection, sound effects.
+# Future updates: aliens firing back, levels, more sound effects, scoring system, dual ship controls, and more.
